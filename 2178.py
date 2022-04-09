@@ -1,5 +1,6 @@
 from collections import deque 
 
+#미로찾기 
 def BFS(board, finish):
     visited = []
     queue = deque()

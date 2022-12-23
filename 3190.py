@@ -1,62 +1,47 @@
 from collections import deque
-import sys
-input = sys.stdin.readline
 
-#보드의 크기
-N = int(input())
+def snake(deque):
+  direction = 0;
+  deque.append([1,1])
+  for sec in range(1,10100):
+    new_location = [deque[len(deque)-1][0] + dy[direction], deque[len(deque)-1][1] +dx[direction] ]
+    location = deque.popleft()
+    if new_location[0] > N or new_location[1] > N or new_location[0] ==0 or new_location[1] ==0:
+      return sec
+    if new_location in deque or new_location ==location:
+      return sec
+    if new_location in apple:
+      deque.appendleft(location)
+      apple.remove(new_location)
+    deque.append(new_location)
+    
+    if move[sec] =="D":
+      direction +=1
+      if direction ==4:
+        direction =0
+    
+    if move[sec] =="L":
+      direction -=1
+      if direction ==-1:
+        direction =3
 
-#사과의 개수
+### get input
+N =int(input())
 K = int(input())
-apple = []
+apple  = []
+
+dx = [1, 0, -1, 0]
+dy = [0, 1, 0, -1]
+
 for i in range(K):
-    a = list(map(int, input().split(" ")))
-    apple.append(a)
-print(apple)
+  apple.append(list(map(int,input().split(" "))))
 
-#방향변환 횟수
 L = int(input())
+move =[ "X" for _ in range(10100)]
 
-direction = []
 for i in range(L):
-    a, b =(input().split(" "))
-    if b == "L":
-        #왼쪽 : 0
-        direction.append([int(a),0 ])
-    else:
-        # 오른쪽: 1
-        direction.append([int(a),1])
-print(direction)
-x, y =0,0 
-length = 1
-nowDirection = [1,0]
-dxdy = deque([[1,0], [0,1], [-1,0], [0,-1]])
-print(dxdy)
-dirIndex = 0
-for i in range(sys.maxint):
-    #가장 처음에는 방향을 찾아준다.  = nowDirection
-    if direction[dirIndex] == i:
-        #좌회전
-        if direction[dirIndex] == 0:
-            tmp = dxdy.popleft()
-            dxdy.append(tmp)
-            nowDirection = dxdy.popleft()
-            dxdy.appendleft(nowDirection)
-        else:
-            #우회전
-            tmp = dxdy.pop()
-            dxdy.appendleft(tmp)
-            nowDirection = tmp
-    #움직여 준다.
-    x = x + nowDirection[0]
-    y = y + nowDirection[1]
-    #보드를 나갔는지 확인하기 
-    if x < 0 or y <0 or x >N or y> N:
-        print(i)
-        break
-    if [x,y] in apple:
-        length = length +1 
-    
+  time, direction = input().split(" ")
+  move[int(time)] = direction
 
-    
-
-
+deque = deque()
+print(snake(deque))

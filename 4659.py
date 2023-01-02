@@ -23,9 +23,9 @@ while True:
         flag = False
         break
   if isGather and flag == True:
-    print("<"+ target_txt+ "> is acceptable.",sep="")
+    print("<", target_txt, "> is acceptable.")
   else:
-    print("<"+ target_txt+ "> is not acceptable.",sep="" )
+    print("<"+ target_txt+ "> is not acceptable." )
     
 
 

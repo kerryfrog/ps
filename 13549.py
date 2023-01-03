@@ -1,7 +1,7 @@
+## 검색을 위한 주석
+## 우선순위 큐 를 이용한 BFS 
+
 from queue import PriorityQueue
-
-
-
 N, K = map(int, input().split(" ")) 
 
 def BFS(start, end):

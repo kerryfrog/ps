@@ -3,9 +3,6 @@
 N, S = map(int, input().split(" "))
 
 num = list(map(int,input().split(" ")))
-
-print(num) 
-
 start=0
 end = 0
 

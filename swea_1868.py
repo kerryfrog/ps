@@ -1,4 +1,5 @@
 from collections import deque
+### 파핑파핑 지뢰찾기
 
 T = int(input())
 # 세로: R, 가로: C
@@ -7,6 +8,7 @@ dx = [1, 1, 0, -1, -1, -1, 0, 1]
 dy = [0, 1, 1, 1, 0, -1, -1, -1]
 
 
+## 처음에 *이 아닌 곳은 주변에 지뢰가 몇개 있는지
 def make_board(board):
     init_visited = [[0 for _ in range(N)] for _ in range(N)]
     for i in range(N):

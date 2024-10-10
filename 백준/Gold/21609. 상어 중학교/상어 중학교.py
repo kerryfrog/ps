@@ -52,7 +52,6 @@ def find_group(target_x, target_y, find_big_group_visited):
             next_y = y + dy[i]
 
             if 0<= next_x < N and 0 <= next_y < N :
-                # print("next_x {}, next_y{} board[next_x][next_y] {} board[i,j] {}".format(next_x, next_y ,board[next_x][next_y] , board[i][j]))
                 if board[next_x][next_y] == board[target_x][target_y] or board[next_x][next_y]  == 0:
                     queue.append([next_x, next_y])
     return [block_cnt, rainbow_block_cnt, group]
@@ -88,8 +87,6 @@ def find_big_group():
 
 def gravity():
     global board
-    # print("print in gravity")
-    # print_board()
     #  y축 기준으로 0부터 맨 아래부터 위로 훑으면서 중력 적용
     for i in range(N):
         now = N-1
@@ -135,14 +132,6 @@ def delete_block(max_info):
     answer += block_cnt * block_cnt
     return True
 
-# print_board()
-
-
-# print(find_group(0,0))
-
-
-# for i in range(N):
-#     print(find_big_group_visited[i])
 
 while True:
     # block_cnt, raionbow_block_cnt, group_list

@@ -12,28 +12,22 @@ for i in range(N):
     if i == target:
         continue
     tree[info[i]].append(i)
-dp = [0 for _ in range(N)]
 
 visited = [0 for _ in range(N)]
-
 ans = 0
 def count(now):
     global  ans
     if visited[now] == 1:
         return
     if len(tree[now]) ==0:
-        # print("ans up now {}".format(now))
         ans += 1
-
     visited[now] = 1
     for i in tree[now]:
         count(i)
     return
 
-
-count(root_node)
 if root_node == target:
     print(0)
 else:
+    count(root_node)
     print(ans)
-# print(dp[root_node] - dp[target] )

@@ -1,0 +1,5 @@
+-- 코드를 입력하세요
+SELECT ai.ANIMAL_ID, ai.ANIMAL_TYPE, ai.NAME
+FROM ANIMAL_INS ai, ANIMAL_OUTS  ao
+WHERE ai.ANIMAL_ID = ao.ANIMAL_ID and ai.SEX_UPON_INTAKE LIKE 'Intact%' 
+and (SEX_UPON_OUTCOME LIKE 'Neutered%' or SEX_UPON_OUTCOME LIKE 'Spayed%');

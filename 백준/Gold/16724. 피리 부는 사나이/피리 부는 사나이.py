@@ -9,21 +9,29 @@ for _ in range(N):
 
 
 visited = [[0 for _ in range(M)] for _ in range(N)]
-now_area = 1
-ans = 0
+finished = [[0 for _ in range(M)] for _ in range(N)]
+answer =0
+
+def dfs(x, y):
+    global visited, finished, answer
+    visited[x][y] = 1
+    nx = x+ direction[board[x][y]][0]
+    ny = y + direction[board[x][y]][1]
+
+    if visited[nx][ny] ==0:
+        dfs(nx,ny)
+    else :
+        if finished[nx][ny] ==0:
+            answer += 1
+    finished[x][y] = 1
+
+
+
 for i in range(N):
     for j in range(M):
-        if visited[i][j] != 0:
-            continue
-        x,y, d = i,j, board[i][j]
-        # print("x:{} y:{} d:{}".format(x,y,d))
-        while visited[x][y] == 0:
-            visited[x][y] = now_area
-            x = x + direction[d][0]
-            y = y + direction[d][1]
-            d = board[x][y]
-        if visited[x][y] == now_area:
-            ans +=1
-        now_area += 1
-        # print("visited",visited)
-print(ans)
+        if visited[i][j] == 0:
+            dfs(i,j)
+
+
+
+print(answer)

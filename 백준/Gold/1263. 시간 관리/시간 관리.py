@@ -17,22 +17,20 @@ for work in works:
         if now -i < 0:
             no_answer = True
             break
-        times[now-i] +=1
-        if times[now - i] == 1:
-            empty = now- i -1
+        empty = now- i -1
     if no_answer:
         break
 
-
-ans = 0
-if no_answer :
-    ans = -1
-elif times[0] >= 1:
-    ans = 0
-else:
-    for i in range(len(times)):
-        if times[i] >= 1:
-            ans -=1
-            break
-        ans+=1
-print(ans)
+print(empty)
+# ans = 0
+# if no_answer :
+#     ans = -1
+# elif times[0] >= 1:
+#     ans = 0
+# else:
+#     for i in range(len(times)):
+#         if times[i] >= 1:
+#             ans -=1
+#             break
+#         ans+=1
+# print(ans)
